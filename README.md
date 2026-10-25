@@ -75,6 +75,15 @@ automatically. Don't like the guess? Type your own home label and it sticks.
 A **12h / 24h** toggle in the top-right switches every time on the page at
 once. Everything you change persists locally between tabs.
 
+## Themes
+
+The Edit panel has two pickers. **Theme** is Light, Dark, or System (follows your
+OS and switches live). **Colors** is one of six schemes: Teal, Midnight, Ember,
+Forest, Dusk, or Graphite. Every scheme has a dark and a light palette, so the
+two choices combine freely, and both are remembered between tabs. The palettes
+live in `tools/make-schemes.mjs`; after editing one, run
+`node tools/make-schemes.mjs` to regenerate the CSS in `newtab.css`.
+
 ## Weather
 
 The big local clock has the current weather beside it: temperature, conditions,
@@ -162,8 +171,10 @@ Project layout:
 - `config.js` — first-run default zones. `cities.js` — bundled city dataset.
 - `src/` — `timeModel.js`, `sun.js` (sunrise/sunset), `bands.js`,
   `dayPart.js`, `zones.js` (storage), `geo.js` (location), `layout.js`
-  (responsive grid), `cityLookup.js` (remote search), `render.js`.
+  (responsive grid), `cityLookup.js` (remote search), `weather.js`,
+  `scheme.js` (color scheme names), `render.js`.
 - `test/` — `node:test` unit suites. `web/` — Astro website.
+- `tools/make-schemes.mjs` — generates the color-scheme CSS in `newtab.css`.
 - `docs/` — durable project memory, design notes, and roadmap.
 
 Contributions welcome — see [docs/ROADMAP.md](docs/ROADMAP.md) for ideas.

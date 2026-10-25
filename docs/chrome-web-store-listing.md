@@ -47,8 +47,8 @@ already into their evening.
   time, so you can find an hour that works for the whole group.
 • Daylight saving warnings: a zone shows "−1h in 4d" the week before daylight
   saving starts or ends.
-• Light, dark, and accent colors: follow your system or pick a theme, then
-  choose from five accent colors.
+• Six color schemes (Teal, Midnight, Ember, Forest, Dusk, Graphite), each in
+  light and dark: follow your system or pick a theme.
 • Yours in seconds: add or remove cities, drag to reorder, rename a zone to a
   person's name, and switch between 12h and 24h.
 • Local weather: temperature, conditions, wind, humidity, and cloud cover for
@@ -63,14 +63,14 @@ stored in your browser. Open a tab, get your bearings, move on.
 ## Assets (all prepared in `assets/store/`)
 
 - **Store icon:** `assets/icons/icon-128.png` (128×128).
-- **Screenshots** (1280×800, upload all 5; the store allows up to 5). Captured
+- **Screenshots** (1280×800, upload all 4; the store allows up to 5). Captured
   from the 1.2.0 package at Wed, Oct 21, 2026, 10:00 in San Francisco, so
   London shows the daylight saving chip:
   - `assets/store/store-hero.png`: the default dark view.
   - `assets/store/store-light.png`: the light theme.
   - `assets/store/store-scrub.png`: scrubbed to 4:30 PM.
-  - `assets/store/store-edit.png`: Edit panel with theme, accent, and city search.
-  - `assets/store/store-accent.png`: light theme, violet accent, Edit panel open.
+  - `assets/store/store-edit.png`: Edit panel with theme and city search. This
+    capture still shows the retired accent row; recapture it before uploading.
 - **Small promo tile** (440×280, required): `assets/store/store-promo.jpg`
   (JPEG — the dashboard rejects PNGs with an alpha channel).
   Minimal icon-on-dark tile.

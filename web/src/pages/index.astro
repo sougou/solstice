@@ -19,7 +19,7 @@ import { CHROME_STORE_URL } from "../consts";
         const pref = localStorage.getItem("theme");
         root.dataset.theme = pref === "light" || pref === "dark" ? pref
           : matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-        root.dataset.accent = localStorage.getItem("accent") || "teal";
+        root.dataset.scheme = localStorage.getItem("scheme") || "teal";
       } catch {}
     </script>
   </head>

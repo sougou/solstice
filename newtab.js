@@ -8,8 +8,8 @@ import {
   readHome, writeHome,
 } from "./src/geo.js";
 import { CITIES } from "./cities.js";
-import { normalizeAccent } from "./src/accent.js";
 import { normalizeTheme, resolveTheme } from "./src/theme.js";
+import { normalizeScheme } from "./src/scheme.js";
 import { resolveUnit, writeUnit, refreshWeather } from "./src/weather.js";
 
 const app = document.getElementById("app");
@@ -53,8 +53,8 @@ let localCoords = localCoordsNow();
 let weather = null;
 let tempUnit = resolveUnit(store, navigator.language);
 let timeFmt = store.getItem("timeFmt") === "24" ? "24" : "12"; // default 12h
-let accent = normalizeAccent(store.getItem("accent"));
-document.documentElement.dataset.accent = accent;
+let scheme = normalizeScheme(store.getItem("scheme"));
+document.documentElement.dataset.scheme = scheme;
 let theme = normalizeTheme(store.getItem("theme"));
 const systemLight = window.matchMedia("(prefers-color-scheme: light)");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -93,13 +93,13 @@ function ctx() {
       paintBar();
       editbar.querySelector(`.ep-theme [data-theme="${theme}"]`)?.focus();
     },
-    accent,
-    onAccent(name) {
-      accent = normalizeAccent(name);
-      store.setItem("accent", accent);
-      document.documentElement.dataset.accent = accent;
+    scheme,
+    onScheme(name) {
+      scheme = normalizeScheme(name);
+      store.setItem("scheme", scheme);
+      document.documentElement.dataset.scheme = scheme;
       paintBar();
-      editbar.querySelector(`.swatch[data-accent="${accent}"]`)?.focus();
+      editbar.querySelector(`.swatch[data-scheme="${scheme}"]`)?.focus();
     },
     onToggle() {
       editMode = !editMode; query = ""; focusSearch = false;
