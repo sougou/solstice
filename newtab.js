@@ -10,6 +10,7 @@ import {
 import { CITIES } from "./cities.js";
 import { normalizeAccent } from "./src/accent.js";
 import { normalizeTheme, resolveTheme } from "./src/theme.js";
+import { resolveUnit, writeUnit, refreshWeather } from "./src/weather.js";
 
 const app = document.getElementById("app");
 const editbar = document.createElement("div");
@@ -49,6 +50,8 @@ let focusSearch = false;
 let localLabel = resolveLocalLabel(store, null);
 // Local card's sun bands: detected coords, else coords from the system timezone.
 let localCoords = localCoordsNow();
+let weather = null;
+let tempUnit = resolveUnit(store, navigator.language);
 let timeFmt = store.getItem("timeFmt") === "24" ? "24" : "12"; // default 12h
 let accent = normalizeAccent(store.getItem("accent"));
 document.documentElement.dataset.accent = accent;
@@ -73,6 +76,13 @@ function ctx() {
       if (m !== "12" && m !== "24") return;
       timeFmt = m;
       store.setItem("timeFmt", m);
+      paintLive();
+    },
+    weather,
+    tempUnit,
+    onTempUnit() {
+      tempUnit = tempUnit === "F" ? "C" : "F";
+      writeUnit(store, tempUnit);
       paintLive();
     },
     theme,
@@ -234,11 +244,21 @@ async function refreshGeo() {
     localLabel = resolveLocalLabel(store, null);
     localCoords = localCoordsNow();
     paintLive();
+    refreshWx();
   }
+}
+
+// Weather for the local zone's coords. Skipped on the website (no detection).
+async function refreshWx() {
+  if (!detect || !localCoords) return;
+  const w = await refreshWeather(store, localCoords.lat, localCoords.lon);
+  if (w) { weather = w; paintLive(); }
 }
 
 paintBar();
 paintLive();
+refreshWx();
+setInterval(refreshWx, 30 * 60 * 1000);
 setInterval(tick, 1000);
 document.addEventListener("keydown", (e) => {
   if (e.key === "Escape" && scrubAt) { scrubAt = null; paintLive(); }

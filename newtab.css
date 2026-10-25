@@ -98,6 +98,25 @@ body { margin:0; min-height:100vh; background:var(--bg); color:var(--txt);
   align-items:flex-start; justify-content:space-between;
   margin:0 0 0 .6rem; }
 .big .ap { font-size:1.4rem; color:var(--muted); letter-spacing:.06em; }
+.clock-row { display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:1.2rem 2.2rem; }
+.clock-main { display:flex; flex-direction:column; align-items:center; gap:.5rem; }
+.wx { display:flex; flex-direction:column; gap:.55rem; padding-left:2.2rem;
+  border-left:1px solid var(--border);
+  font:13px/1.2 "JetBrains Mono",ui-monospace,Menlo,monospace; }
+.wx-temp { align-self:flex-start; background:transparent; border:0; padding:0;
+  cursor:pointer; color:var(--txt); letter-spacing:-.02em;
+  font:300 4.5rem/1 "JetBrains Mono",ui-monospace,Menlo,monospace; }
+.wx-temp:hover { color:var(--accent); }
+.wx-cond { color:var(--accent); font-size:1rem; letter-spacing:.04em; }
+.wx-details { display:grid; grid-template-columns:auto auto; gap:.4rem 1.2rem;
+  margin:.3rem 0 0; color:var(--muted); }
+.wx-details dt { text-transform:uppercase; letter-spacing:.1em; font-size:11px; }
+.wx-details dd { margin:0; color:var(--txt); }
+@media (max-width: 900px) {
+  .wx { padding-left:0; border-left:0; align-items:center; text-align:center; }
+  .wx-temp { align-self:center; }
+}
 .big .secs { font:.95rem/1 "JetBrains Mono",ui-monospace,Menlo,monospace;
   color:var(--accent); letter-spacing:.06em; }
 /* --cols is set per-render by gridColumns() (count- and width-aware).

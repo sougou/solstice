@@ -100,6 +100,15 @@ import { CHROME_STORE_URL as chromeStoreUrl, GITHUB_URL as githubUrl } from "../
         the add-city box.
       </p>
 
+      <h2>Local weather</h2>
+      <p>
+        The extension shows the current weather for your local zone beside the
+        big local clock. To get it, your local zone's coordinates (rounded to
+        about a kilometre) are sent to Open-Meteo's free forecast API. The
+        result is cached locally for 30 minutes, and your °C/°F choice is
+        stored locally. If the request fails, no weather is shown.
+      </p>
+
       <h2>The Solstice website</h2>
       <p>
         This website runs the same new tab in your browser, so you can try and
@@ -117,6 +126,7 @@ import { CHROME_STORE_URL as chromeStoreUrl, GITHUB_URL as githubUrl } from "../
           your system time zone, or a home label you type.
         </li>
         <li>City search works as described above: your search text goes to Open-Meteo.</li>
+        <li>The website does not show local weather and sends no coordinates.</li>
         <li>
           The site is hosted on Vercel, which receives standard request data
           such as your IP address when you load the page. The site has no
@@ -133,7 +143,7 @@ import { CHROME_STORE_URL as chromeStoreUrl, GITHUB_URL as githubUrl } from "../
         </li>
         <li>ipwho.is, ipapi.co, and get.geojs.io — IP geolocation fallback</li>
         <li>
-          <a href="https://open-meteo.com/en/terms">Open-Meteo</a> — city search
+          <a href="https://open-meteo.com/en/terms">Open-Meteo</a> — city search and local weather
         </li>
         <li>
           <a href="https://vercel.com/legal/privacy-policy">Vercel</a> — website
@@ -142,7 +152,8 @@ import { CHROME_STORE_URL as chromeStoreUrl, GITHUB_URL as githubUrl } from "../
       </ul>
       <p>
         Solstice sends them only the minimum needed for the feature: your
-        coordinates, an implicit IP address, or your typed search query. It
+        coordinates (rounded for weather), an implicit IP address, or your typed
+        search query. It
         sends no identifier, account, or browsing history because it has none.
       </p>
 

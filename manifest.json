@@ -17,7 +17,8 @@
     "https://ipwho.is/*",
     "https://ipapi.co/*",
     "https://get.geojs.io/*",
-    "https://geocoding-api.open-meteo.com/*"
+    "https://geocoding-api.open-meteo.com/*",
+    "https://api.open-meteo.com/*"
   ],
   "chrome_url_overrides": { "newtab": "newtab.html" }
 }

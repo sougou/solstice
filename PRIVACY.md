@@ -59,6 +59,14 @@ When you search for a city to add, your search text is sent to Open-Meteo's
 free geocoding API to return matching cities and their coordinates. The
 query is only sent while you are actively typing in the add-city box.
 
+## Local weather
+
+The extension shows the current weather for your local zone beside the big local
+clock. To get it, your local zone's coordinates (rounded to about a kilometre) are
+sent to Open-Meteo's free forecast API. The result is cached locally for 30
+minutes, and your °C/°F choice is stored locally. If the request fails, no
+weather is shown.
+
 ## The Solstice website
 
 The website at https://solstice.seanoliver.dev runs the same new tab in your
@@ -71,6 +79,7 @@ browser, so you can try and customize it without installing anything.
   Geolocation and never makes an IP lookup. The local card uses your system
   timezone, or a home label you type.
 - City search works as described above: your search text goes to Open-Meteo.
+- The website does not show local weather and sends no coordinates.
 - The site is hosted on Vercel, which receives standard request data such as
   your IP address when you load the page. The site has no analytics.
 
@@ -81,12 +90,12 @@ privacy policy:
 
 - **BigDataCloud** (reverse-geocoding) — https://www.bigdatacloud.com/privacy-policy
 - **ipwho.is**, **ipapi.co**, **get.geojs.io** (IP geolocation fallback)
-- **Open-Meteo** (city search) — https://open-meteo.com/en/terms
+- **Open-Meteo** (city search and local weather) — https://open-meteo.com/en/terms
 - **Vercel** (website hosting only) — https://vercel.com/legal/privacy-policy
 
 The extension sends them only the minimum needed for the feature: your
 coordinates (BigDataCloud), an implicit IP address (IP providers), or your
-typed search query (Open-Meteo). It does not send any identifier, account,
+typed search query or rounded local coordinates (Open-Meteo). It does not send any identifier, account,
 or browsing history, because it has none.
 
 ## Permissions
@@ -94,7 +103,7 @@ or browsing history, because it has none.
 - **`geolocation`** — used solely to label your local card with a city and
   calculate its daylight accurately. You can deny it; the extension falls back
   to IP or timezone city.
-- **Host permissions** for the five domains listed above — required so the
+- **Host permissions** for the six domains listed above — required so the
   extension may contact those geolocation/geocoding APIs.
 
 ## Contact

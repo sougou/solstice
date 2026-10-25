@@ -75,6 +75,16 @@ automatically. Don't like the guess? Type your own home label and it sticks.
 A **12h / 24h** toggle in the top-right switches every time on the page at
 once. Everything you change persists locally between tabs.
 
+## Weather
+
+The big local clock has the current weather beside it: temperature, conditions,
+feels-like, wind, humidity, and cloud cover. Click the temperature to switch
+°C/°F (wind follows: mph or km/h). It defaults to °F for `en-US` browsers.
+
+Weather comes from [Open-Meteo](https://open-meteo.com) for your local zone's
+coordinates, rounded to about a kilometre, and refreshes every 30 minutes. If the
+request fails, the panel simply doesn't show. It isn't shown on the website.
+
 ## Scrub to any moment
 
 <p align="center">
