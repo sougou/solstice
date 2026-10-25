@@ -5,6 +5,13 @@ separately and is not versioned here.
 
 ## Unreleased
 
+## 1.2.1 (2026-10-24)
+
+- Local weather beside the big clock: temperature, conditions, feels-like, wind,
+  humidity, and cloud cover. Click the temperature to switch °C/°F.
+- Six color schemes (Teal, Midnight, Ember, Forest, Dusk, Graphite), each with a
+  dark and a light palette. They replace the accent color picker.
+- No host permissions are requested any more, so Chrome shows fewer warnings.
 - Card text no longer shows twice while cards resize during an animation.
 
 ## 1.2.0 (2026-09-29)
