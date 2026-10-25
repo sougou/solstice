@@ -86,13 +86,13 @@ stored in your browser. Open a tab, get your bearings, move on.
     location or the browser's time-zone name. The detected city and coordinates
     are cached locally for 24 hours; coordinates are sent only to the
     reverse-geocoding endpoint to resolve the city name.
-  - Host `api.bigdatacloud.net` — reverse-geocode granted coordinates → city name.
-  - Hosts `ipwho.is`, `ipapi.co`, `get.geojs.io` — IP-based city fallback when
-    geolocation is denied or unavailable (tried in order).
-  - Host `geocoding-api.open-meteo.com` — city search when adding a zone whose
-    name isn't in the bundled dataset.
-  - Host `api.open-meteo.com` — current weather for the local zone (rounded
-    coordinates; cached locally for 30 minutes).
+  - **No host permissions.** The extension requests none. Its page calls these
+    services directly, and they allow that (CORS): `api.bigdatacloud.net`
+    (reverse-geocode granted coordinates → city name), `ipwho.is`, `ipapi.co`,
+    `get.geojs.io` (IP-based city fallback when geolocation is denied or
+    unavailable, tried in order), `geocoding-api.open-meteo.com` (city search
+    for zones not in the bundled dataset), and `api.open-meteo.com` (current
+    weather for the local zone, rounded coordinates, cached 30 minutes).
 - **Data usage disclosures:** Does NOT collect or transmit personal or usage
   data. No analytics, no remote logging. A detected city and coordinates are
   cached locally for 24 hours to label the local card and calculate daylight.
@@ -115,10 +115,10 @@ stored in your browser. Open a tab, get your bearings, move on.
 
 ## Notes
 
-- The 6 remote host permissions are the most likely review question. They're all
-  small, single-call geocoding/IP lookups with no data collection — the
-  justifications above map each host to its one job. If review pushes back, the
-  fallback is to drop the IP-geolocation hosts (`ipwho.is`, `ipapi.co`,
-  `get.geojs.io`) and rely on the browser geolocation prompt alone.
+- The extension declares no `host_permissions` on purpose: a host permission
+  triggers an in-depth review warning, and none of the services need one
+  because they all send `access-control-allow-origin: *`. If a service stops
+  sending that header, its requests will fail (the app degrades quietly) and the
+  fix is to add that one host back.
 - Version stays `1.0.0` for the first publish; bump on each subsequent upload.
 ```

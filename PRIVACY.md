@@ -103,8 +103,9 @@ or browsing history, because it has none.
 - **`geolocation`** — used solely to label your local card with a city and
   calculate its daylight accurately. You can deny it; the extension falls back
   to IP or timezone city.
-- **Host permissions** for the six domains listed above — required so the
-  extension may contact those geolocation/geocoding APIs.
+- **No host permissions.** The extension requests none. It contacts the
+  geolocation, geocoding, and weather services listed above directly from its
+  own page, and those services allow that.
 
 ## Contact
 

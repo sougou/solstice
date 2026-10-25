@@ -12,13 +12,5 @@
     "128": "assets/icons/icon-128.png"
   },
   "permissions": ["geolocation"],
-  "host_permissions": [
-    "https://api.bigdatacloud.net/*",
-    "https://ipwho.is/*",
-    "https://ipapi.co/*",
-    "https://get.geojs.io/*",
-    "https://geocoding-api.open-meteo.com/*",
-    "https://api.open-meteo.com/*"
-  ],
   "chrome_url_overrides": { "newtab": "newtab.html" }
 }
