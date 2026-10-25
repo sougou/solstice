@@ -1,6 +1,6 @@
 # Privacy Policy
 
-_Last updated: 2026-09-28_
+_Last updated: 2026-10-24_
 
 Solstice is a Chrome new-tab extension that displays a world clock, and a
 website that runs the same page in your browser. The extension has
@@ -69,8 +69,10 @@ weather is shown.
 
 ## The Solstice website
 
-The website at https://solstice.seanoliver.dev runs the same new tab in your
-browser, so you can try and customize it without installing anything.
+This repository also contains the source of a website that runs the same new
+tab in your browser. This project does not operate a public deployment of it; the
+original Solstice project hosts one at https://solstice.seanoliver.dev. If you use
+a deployment of it, this is how it behaves:
 
 - Your settings (timezones, 12h/24h, home label) are stored in that site's
   `localStorage`, separate from the extension. The site also remembers
@@ -109,5 +111,5 @@ or browsing history, because it has none.
 
 ## Contact
 
-Questions or concerns: email [solstice@seanoliver.dev](mailto:solstice@seanoliver.dev)
-or open an issue on the project's GitHub repository.
+Questions or concerns: open an issue at
+<https://github.com/sougou/solstice/issues>.

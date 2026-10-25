@@ -2,7 +2,8 @@
 
 Everything needed to publish Solstice. Copy/paste the listing fields, upload
 the prepared assets, and follow the submission steps. Items marked **(you)**
-require Sean's developer account and can't be automated.
+require your own Chrome Web Store developer account and can't be automated.
+This fork is meant for **private distribution** (see "Private distribution" below).
 
 ## Package
 
@@ -15,10 +16,11 @@ V=$(python3 -c "import json; print(json.load(open('manifest.json'))['version'])"
 rm -f solstice-*.zip
 zip -rq "solstice-$V.zip" \
   manifest.json newtab.html newtab.css newtab.js config.js cities.js \
-  src assets/icons -x '*.DS_Store'
+  src assets/icons assets/fonts -x '*.DS_Store'
 ```
 
-Contains only runtime files + icons — no docs, tests, screenshots, or README.
+Contains only runtime files, icons, and the bundled font (`newtab.css` loads it from
+`assets/fonts`) — no docs, tests, screenshots, or README.
 
 ## Listing fields
 
@@ -78,7 +80,8 @@ stored in your browser. Open a tab, get your bearings, move on.
 ## Privacy tab (required before submission)
 
 - **Single purpose:** "A new-tab page that displays the current time across
-  multiple time zones, with sunrise/sunset-based day-night shading."
+  multiple time zones with sunrise/sunset-based day-night shading, plus local
+  weather."
 - **Permission justifications:**
   - `geolocation` — Optional. Used to label the user's local card with a
     nearby city name and calculate accurate sunrise/sunset bands for that
@@ -93,22 +96,27 @@ stored in your browser. Open a tab, get your bearings, move on.
     unavailable, tried in order), `geocoding-api.open-meteo.com` (city search
     for zones not in the bundled dataset), and `api.open-meteo.com` (current
     weather for the local zone, rounded coordinates, cached 30 minutes).
-- **Data usage disclosures:** Does NOT collect or transmit personal or usage
-  data. No analytics, no remote logging. A detected city and coordinates are
-  cached locally for 24 hours to label the local card and calculate daylight.
-- **Privacy policy URL:** `https://solstice.seanoliver.dev/privacy`
-- **Website (Store listing → Additional fields → Official URL / Homepage URL):** `https://solstice.seanoliver.dev`
+- **Data usage disclosures:** Declare **location** (approximate or precise, only if
+  the user allows it, otherwise derived from the IP address). It is sent to
+  third-party services as described in `PRIVACY.md` (BigDataCloud, Open-Meteo, and
+  the IP lookup providers) and is not stored by the developer or sold. No
+  analytics, no remote logging, no accounts. A detected city and coordinates are
+  cached locally for 24 hours to label the local card and calculate daylight;
+  weather is cached for 30 minutes.
+- **Privacy policy URL:** `https://github.com/sougou/solstice/blob/main/PRIVACY.md`
+  (the repo must be public so reviewers and testers can open it)
+- **Website (Store listing → Additional fields → Official URL / Homepage URL):** `https://github.com/sougou/solstice`
 
 ## Submission steps **(you)**
 
 1. Go to the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole).
    If this is the first publish, pay the one-time **$5** developer registration.
-2. **New item** → upload `solstice-1.0.0.zip`.
+2. **New item** → upload `solstice-<version>.zip`.
 3. Fill the **Store listing** tab with the fields above; upload the icon and
    2–3 screenshots (and the promo tile if you want).
 4. Fill the **Privacy practices** tab with the single-purpose statement, the
    per-permission justifications, the data-usage disclosures, and the policy URL.
-5. Set **Distribution** (Public) and visibility.
+5. Set **Distribution** to **Private** (trusted testers, by Google account) or **Unlisted**, not Public.
 6. **Submit for review.** New-tab overrides get extra scrutiny — review can take
    a few days. If rejected, the reason is usually a permission justification;
    tighten the wording above and resubmit.
@@ -120,5 +128,25 @@ stored in your browser. Open a tab, get your bearings, move on.
   because they all send `access-control-allow-origin: *`. If a service stops
   sending that header, its requests will fail (the app degrades quietly) and the
   fix is to add that one host back.
-- Version stays `1.0.0` for the first publish; bump on each subsequent upload.
+- The store only accepts a version higher than the one already published, so bump
+  `version` in `manifest.json` for every upload.
+
+## Test instructions (Access → Test instructions)
+
+Paste this for reviewers:
+
+```
+No account or login is needed. Open a new tab to see the clocks and the weather.
+Location is optional: deny the prompt and the extension falls back to an IP lookup
+or the time zone. It requests no host permissions and contacts only the services
+listed in the privacy policy.
+```
+
+## Private distribution
+
+- Keep the Distribution tab on **Private** (trusted testers) or **Unlisted**.
+- Testers install from the item's store link while signed in to Chrome with an
+  account on the trusted testers list; private items don't appear in search.
+- The repo behind the privacy policy URL has to be public, or reviewers and
+  testers can't open the policy.
 ```
