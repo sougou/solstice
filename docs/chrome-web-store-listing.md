@@ -71,8 +71,7 @@ stored in your browser. Open a tab, get your bearings, move on.
   - `assets/store/store-hero.png`: the default dark view.
   - `assets/store/store-light.png`: the light theme.
   - `assets/store/store-scrub.png`: scrubbed to 4:30 PM.
-  - `assets/store/store-edit.png`: Edit panel with theme and city search. This
-    capture still shows the retired accent row; recapture it before uploading.
+  - `assets/store/store-edit.png`: Edit panel with the Theme and Colors pickers (Midnight).
 - **Small promo tile** (440×280, required): `assets/store/store-promo.jpg`
   (JPEG — the dashboard rejects PNGs with an alpha channel).
   Minimal icon-on-dark tile.
